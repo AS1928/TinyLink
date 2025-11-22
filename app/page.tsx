@@ -163,19 +163,20 @@ export default function Dashboard() {
             {/* Bottom Row - Code Input and Button */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <input
-                type="text"
-                value={customCode}
-                onChange={(e) => setCustomCode(e.target.value)}
-                placeholder="Custom code (optional)"
-                pattern="[A-Za-z0-9]{6,8}"
-                className="md:col-span-2 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              type="text"
+              value={customCode}
+              onChange={(e) => setCustomCode(e.target.value)}
+              placeholder="Custom code (6-8 chars, optional)"
+              pattern="[A-Za-z0-9]{6,8}"
+              title="Use 6-8 alphanumeric characters (A-Z, a-z, 0-9)"
+              className="md:col-span-2 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
               />
               <button
-                type="submit"
-                disabled={formLoading}
-                className="w-full md:col-span-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
+              type="submit"
+              disabled={formLoading || (customCode && !/^[A-Za-z0-9]{6,8}$/.test(customCode))}
+              className="w-full md:col-span-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
               >
-                {formLoading ? 'Creating...' : 'Shorten Now!'}
+              {formLoading ? 'Creating...' : 'Shorten Now!'}
               </button>
             </div>
 
