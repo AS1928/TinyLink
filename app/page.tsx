@@ -173,7 +173,7 @@ export default function Dashboard() {
               />
               <button
               type="submit"
-              disabled={formLoading || (customCode && !/^[A-Za-z0-9]{6,8}$/.test(customCode))}
+              disabled={formLoading || (customCode !== "" && !/^[A-Za-z0-9]{6,8}$/.test(customCode))}
               className="w-full md:col-span-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
               >
               {formLoading ? 'Creating...' : 'Shorten Now!'}
